@@ -1,3 +1,4 @@
+package Quiz110101;
 
 
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.regex.Pattern;
  * @author vamalboro
  *
  */
-public class Quiz_110101 implements Runnable{
+public class Main implements Runnable{
     static String ReadLn(int maxLength){  // utility function to read from stdin,
                                           // Provided by Programming-challenges, edit for style only
         byte line[] = new byte [maxLength];
@@ -31,7 +32,7 @@ public class Quiz_110101 implements Runnable{
 
     public static void main(String args[])  // entry point from OS
     {
-        Quiz_110101 myWork = new Quiz_110101();  // Construct the bootloader
+        Main myWork = new Main();  // Construct the bootloader
         myWork.run();            // execute
     }
 
@@ -44,7 +45,7 @@ class Executer implements Runnable{
     public void run(){
     	String line;
     	StringTokenizer idata;
-    	while((line = Quiz_110101.ReadLn(255)) != null) {    		
+    	while((line = Main.ReadLn(255)) != null) {    		
     		line = line.trim();
     		if (line.length() == 0 || !matched("^\\d+ +\\d+$", line)) {
     			break;
