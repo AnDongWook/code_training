@@ -5,7 +5,6 @@ import java.io.IOException;
 
 /**
  * Minesweeper
- * @author vamalboro
  *
  */
 public class Main implements Runnable{

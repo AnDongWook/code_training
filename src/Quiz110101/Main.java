@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 
 /**
  * 3n+1
- * @author vamalboro
  *
  */
 public class Main implements Runnable{
