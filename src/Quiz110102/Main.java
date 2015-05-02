@@ -54,10 +54,9 @@ class Executer implements Runnable{
     public static int SPACE = 46;
     public void run(){
 
+        List<int[][]> list = new ArrayList<int[][]>();
         String line = null;
         StringTokenizer idata;
-        boolean bFlag = false;
-        int nCase = 0;
         while((line = Main.ReadLn(255)) != null) {
             line = line.trim();
             if (line.length() == 0 || !matched("^\\d+ +\\d+$", line)) {
@@ -77,29 +76,33 @@ class Executer implements Runnable{
             }
 
             try {
-                int[][] m = getMineData(row, col);
-                if (bFlag) {
-                    System.out.println();
-                }
-                bFlag = true;
-                System.out.format("Field #%d:\n", ++nCase);
-
-                for (int i = 0; i < m.length; i++) {
-                    int [] r = m[i];
-                    for (int j = 0; j < r.length; j++) {
-                        if (isMine(r[j])) {
-                            System.out.print("*");
-                        } else {
-                            System.out.print(getMineCount(m, m.length, r.length, i, j));
-                        }
-                    }
-                    System.out.println();
-                }
+                int[][] mine = getMineData(row, col);
+                list.add(mine);
             } catch(IllegalArgumentException e) {
                 break;
             }
         }
 
+
+        for (int k = 0; k < list.size(); k++) {
+            System.out.format("Field #%d:\n", k + 1);
+            int[][] m = list.get(k);
+
+            for (int i = 0; i < m.length; i++) {
+                int [] r = m[i];
+                for (int j = 0; j < r.length; j++) {
+                    if (isMine(r[j])) {
+                        System.out.print("*");
+                    } else {
+                        System.out.print(getMineCount(m, m.length, r.length, i, j));
+                    }
+                }
+                System.out.println();
+            }
+            if (k < list.size() - 1) {
+                System.out.println();
+            }
+        }
     }
 
     public int getMineCount(int[][] m , int row, int col, int i, int j) {
