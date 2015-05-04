@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 /**
  * Minesweeper
- *
+ * PC/UVa ID: 110102/10189
  */
 public class Main implements Runnable{
     static String ReadLn(int maxLength){  // utility function to read from stdin,
