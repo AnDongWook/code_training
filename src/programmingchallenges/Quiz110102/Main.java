@@ -1,4 +1,4 @@
-package Quiz110102;
+package programmingchallenges.Quiz110102;
 
 
 import java.io.IOException;
